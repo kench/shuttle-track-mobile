@@ -26,13 +26,10 @@ function initialize()
   refresh_shuttles(map);
 }
 
-function geolocate(map)
-{
-  var browserSupportFlag =  new Boolean();
-}
-
 function refresh_shuttles(map)
 {
-  shuttles = new google.maps.KmlLayer(shuttles_url, { map: map });
-  setTimeout("refresh_shuttles(map)", 10000);
+  var cache_buster = shuttles_url + "?" + UTC();
+  shuttles.setMap(map:null); // Remove shuttle layer.
+  shuttles = null; // Dereference.
+  shuttles = new google.maps.KmlLayer(cache_buster, { map: map });
 }
