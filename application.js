@@ -8,6 +8,7 @@ var stops_layer = null;
 var west_route = null;
 var east_route = null;
 var shuttles = null;
+var map = null;
 
 // Call this function when the page has been loaded
 function initialize()
@@ -17,14 +18,21 @@ function initialize()
     center: central_campus,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
-  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   stops_layer = new google.maps.KmlLayer(stops_url, { map: map });
   west_route = new google.maps.KmlLayer(west_route_url, { map: map });
   east_route = new google.maps.KmlLayer(east_route_url, { map: map });
   shuttles = new google.maps.KmlLayer(shuttles_url, { map: map});
+  refresh_shuttles(map);
 }
 
 function geolocate(map)
 {
   var browserSupportFlag =  new Boolean();
+}
+
+function refresh_shuttles(map)
+{
+  shuttles = new google.maps.KmlLayer(shuttles_url, { map: map });
+  setTimeout("refresh_shuttles(map)", 10000);
 }
