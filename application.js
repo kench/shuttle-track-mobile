@@ -1,5 +1,5 @@
 // TODO: Implement saved initial location
-var central_campus = new google.maps.LatLng(42.73, -73.6775);
+var center = new google.maps.LatLng(42.73, -73.6775);
 var stops_url = "http://shuttles.rpi.edu/shuttle_tracking.kml";
 var west_route_url = "http://shuttles.rpi.edu/routes/1.kml";
 var east_route_url = "http://shuttles.rpi.edu/routes/2.kml";
@@ -15,7 +15,7 @@ function initialize()
 {
   var myOptions = {
     zoom: 16,
-    center: central_campus,
+    center: center,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
