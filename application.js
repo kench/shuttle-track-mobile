@@ -29,7 +29,7 @@ function initialize()
 function refresh_shuttles(map)
 {
   var cache_buster = shuttles_url + "?" + UTC();
-  shuttles.setMap(map:null); // Remove shuttle layer.
+  shuttles.setMap(null); // Remove shuttle layer.
   shuttles = null; // Dereference.
   shuttles = new google.maps.KmlLayer(cache_buster, { map: map });
 }
